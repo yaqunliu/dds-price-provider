@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "success": true,
+  "message": "",
+  "data": {
+    "currency": "CNY",
+    "price_unit": "per_1m_tokens",
+    "site_name": "hvoy",
+    "site_domain": "hvoy.ai",
+    "updated_at": "2026-04-16T12:00:00Z",
+    "models": [
+      {
+        "model_name": "claude-sonnet-4-6",
+        "group_name": "cc",
+        "input_price": 7.5,
+        "output_price": 37.5,
+        "cache_input_price": 0.75,
+        "enabled": true,
+        "note": ""
+      }
+    ]
+  }
+}
