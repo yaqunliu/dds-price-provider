@@ -1,0 +1,12 @@
+.git/
+.gitignore
+.idea/
+.vscode/
+bin/
+*.exe
+*.out
+*.test
+*.prof
+*.log
+.DS_Store
+configs/config.yaml

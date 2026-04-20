@@ -31,8 +31,7 @@ type SiteConfig struct {
 }
 
 type PricingConfig struct {
-	FxUsdToCny     float64 `yaml:"fx_usd_to_cny"`
-	PriceDecimals  int     `yaml:"price_decimals"`
+	PriceDecimals int `yaml:"price_decimals"`
 }
 
 type CacheConfig struct {
@@ -73,11 +72,6 @@ func applyEnvOverrides(cfg *Config) {
 			cfg.Server.Port = p
 		}
 	}
-	if v := os.Getenv("FX_USD_TO_CNY"); v != "" {
-		if f, err := strconv.ParseFloat(v, 64); err == nil {
-			cfg.Pricing.FxUsdToCny = f
-		}
-	}
 }
 
 func applyDefaults(cfg *Config) {
@@ -86,9 +80,6 @@ func applyDefaults(cfg *Config) {
 	}
 	if cfg.Sub2API.TimeoutSeconds == 0 {
 		cfg.Sub2API.TimeoutSeconds = 10
-	}
-	if cfg.Pricing.FxUsdToCny == 0 {
-		cfg.Pricing.FxUsdToCny = 7.2
 	}
 	if cfg.Pricing.PriceDecimals == 0 {
 		cfg.Pricing.PriceDecimals = 4

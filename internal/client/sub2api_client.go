@@ -46,7 +46,7 @@ func (c *Sub2APIClient) ListGroups(ctx context.Context) ([]Group, error) {
 		return nil, fmt.Errorf("build request: %w", err)
 	}
 	if c.adminToken != "" {
-		req.Header.Set("Authorization", "Bearer "+c.adminToken)
+		req.Header.Set("x-api-key", c.adminToken)
 	}
 
 	resp, err := c.http.Do(req)

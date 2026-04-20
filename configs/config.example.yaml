@@ -2,13 +2,13 @@ server:
   port: 8085
 
 sub2api:
-  base_url: "your-sub2api-base-url"
-  admin_token: "your-sub2api-admin-token"
+  base_url: "https://www.ddshub.cc"
+  admin_token: "***REPLACE_ME***"
   timeout_seconds: 10
 
 litellm:
-  remote_url: "https://raw.githubusercontent.com/Wei-Shaw/model-price-repo/c7947e9871687e664180bc971d4837f1fc2784a9/model_prices_and_context_window.json"
-  fallback_file: "your-fallback-file-path"
+  remote_url: "https://raw.githubusercontent.com/Wei-Shaw/claude-relay-service/price-mirror/model_prices_and_context_window.json"
+  fallback_file: "./resources/model_pricing.json"
 
 site:
   name: "hvoy"
@@ -17,11 +17,12 @@ site:
   price_unit: "per_1m_tokens"
 
 pricing:
-  fx_usd_to_cny: 7.2
   price_decimals: 4
 
 cache:
   ttl_seconds: 600
 
 include_groups:
-  - "cc"
+  - "claude-max（仅 Claude Code）"
+  - "codex-基础"
+  - "claude-稳定（支持 API）"

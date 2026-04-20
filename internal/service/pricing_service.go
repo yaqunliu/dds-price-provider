@@ -106,7 +106,7 @@ func (s *PricingService) buildFresh(ctx context.Context) (*types.PricingData, er
 }
 
 func (s *PricingService) pricesForGroup(g client.Group, pricing map[string]client.LiteLLMEntry) []types.ModelPrice {
-	factor := 1e6 * g.RateMultiplier * s.cfg.Pricing.FxUsdToCny
+	factor := 1e6 * g.RateMultiplier
 	decimals := s.cfg.Pricing.PriceDecimals
 
 	out := make([]types.ModelPrice, 0, 32)
