@@ -39,13 +39,12 @@ type CacheConfig struct {
 }
 
 type Config struct {
-	Server        ServerConfig  `yaml:"server"`
-	Sub2API       Sub2APIConfig `yaml:"sub2api"`
-	LiteLLM       LiteLLMConfig `yaml:"litellm"`
-	Site          SiteConfig    `yaml:"site"`
-	Pricing       PricingConfig `yaml:"pricing"`
-	Cache         CacheConfig   `yaml:"cache"`
-	IncludeGroups []string      `yaml:"include_groups"`
+	Server  ServerConfig  `yaml:"server"`
+	Sub2API Sub2APIConfig `yaml:"sub2api"`
+	LiteLLM LiteLLMConfig `yaml:"litellm"`
+	Site    SiteConfig    `yaml:"site"`
+	Pricing PricingConfig `yaml:"pricing"`
+	Cache   CacheConfig   `yaml:"cache"`
 }
 
 func Load(path string) (*Config, error) {

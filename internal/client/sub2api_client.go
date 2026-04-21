@@ -15,6 +15,7 @@ type Group struct {
 	Name           string   `json:"name"`
 	Platform       string   `json:"platform"`
 	RateMultiplier float64  `json:"rate_multiplier"`
+	IsExclusive    bool     `json:"is_exclusive"`
 	Status         string   `json:"status"`
 	Scopes         []string `json:"supported_model_scopes"`
 }

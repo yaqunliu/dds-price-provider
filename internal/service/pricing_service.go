@@ -15,22 +15,17 @@ import (
 )
 
 type PricingService struct {
-	cfg        *config.Config
-	sub2api    *client.Sub2APIClient
-	litellm    *client.LiteLLMLoader
-	whitelist  map[string]struct{}
+	cfg     *config.Config
+	sub2api *client.Sub2APIClient
+	litellm *client.LiteLLMLoader
 
-	mu         sync.Mutex
-	cached     *types.PricingData
-	cachedAt   time.Time
+	mu       sync.Mutex
+	cached   *types.PricingData
+	cachedAt time.Time
 }
 
 func NewPricingService(cfg *config.Config, sub *client.Sub2APIClient, lite *client.LiteLLMLoader) *PricingService {
-	wl := make(map[string]struct{}, len(cfg.IncludeGroups))
-	for _, name := range cfg.IncludeGroups {
-		wl[name] = struct{}{}
-	}
-	return &PricingService{cfg: cfg, sub2api: sub, litellm: lite, whitelist: wl}
+	return &PricingService{cfg: cfg, sub2api: sub, litellm: lite}
 }
 
 func (s *PricingService) BuildPricing(ctx context.Context) (*types.PricingData, error) {
@@ -82,7 +77,7 @@ func (s *PricingService) buildFresh(ctx context.Context) (*types.PricingData, er
 
 	models := make([]types.ModelPrice, 0, 64)
 	for _, g := range groups {
-		if _, ok := s.whitelist[g.Name]; !ok {
+		if g.IsExclusive {
 			continue
 		}
 		models = append(models, s.pricesForGroup(g, pricing)...)

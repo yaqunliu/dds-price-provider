@@ -21,8 +21,3 @@ pricing:
 
 cache:
   ttl_seconds: 600
-
-include_groups:
-  - "claude-max（仅 Claude Code）"
-  - "codex-基础"
-  - "claude-稳定（支持 API）"
